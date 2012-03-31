@@ -1,0 +1,104 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.1.1' #, :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+
+# Database
+gem 'mysql2', '~> 0.3.7', :git => 'git://github.com/chipiga/mysql2.git' # needed because of incorrect source base
+gem 'foreigner', '~> 1.1.1'
+
+# Auth
+gem 'devise', '~> 1.4.8'
+gem 'cancan', '~> 1.6.7'
+
+# Models
+gem 'carrierwave', '~> 0.5.7'
+gem 'mini_magick', '~> 3.3'
+gem 'streamio-ffmpeg', '~> 0.8.3'
+gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari.git' #, '~> 0.12.4'
+gem 'clean-bitmask-attribute', '~> 2.0.3', :require => 'bitmask-attribute'
+gem 'friendly_id', '~> 4.0.0.beta12'
+gem 'ancestry', '~> 1.2.4'
+gem 'acts-as-taggable-on', '~> 2.1.1' #, :git => 'git://github.com/mbleigh/acts-as-taggable-on.git'
+gem 'validates_lengths_from_database', '~> 0.1.3'
+# gem 'attribute_normalizer', '~> 1.0.0.pre4'
+gem 'globalize3', '~> 0.2.0.beta4'
+gem 'state_machine', '~> 1.0.2'
+gem 'squeel', '~> 0.9.3'
+gem "date_validator", "~> 0.6.2"
+
+# Controllers
+# gem 'inherited_resources', '~> 1.3.0' # conflict with active_admin
+gem 'has_scope', '~> 0.5.1'
+
+# Views
+gem 'haml-rails', '~> 0.3.4'
+gem 'formtastic', '~> 2.0.2' # :git => 'git://github.com/justinfrench/formtastic.git'
+
+# Misc
+gem 'meta-tags', '~> 1.2.4', :require => 'meta_tags'
+# gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+# gem 'ckeditor', :git => 'git://github.com/bbenezech/ckeditor.git' # '~> 3.6.1'
+gem "whenever", "~> 0.7.0", :require => false
+gem "tilt", "~> 1.3.3"
+gem "efax", "~> 1.4.1"
+gem "activeadmin",  :git => "git://github.com/gregbell/active_admin.git"
+gem 'sass-rails', '~> 3.1.4' # TODO move back to assets group
+gem 'routing-filter'
+gem "delocalize"
+gem "crummy", "~> 1.3"
+
+# JS
+gem 'jquery-rails', '~> 1.0.16'
+
+# Gems used only for assets and not required in production environments by default.
+group :assets do
+  # gem 'sass-rails', '~> 3.1.4'
+  gem 'coffee-rails', '~> 3.1.1'
+  gem 'uglifier', '~> 1.0.3'
+  gem 'compass', '~> 0.12.alpha.0' # :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+  gem 'therubyracer', '~> 0.9.8' # ExecJS runtime
+end
+
+group :production do
+  gem 'passenger', '~> 3.0.9'
+  gem 'exception_notification', '~> 2.5.2'
+  # gem 'newrelic_rpm', '~> 3.1.1'
+end
+
+group :development do
+  # gem 'rails-dev-tweaks', '~> 0.5.1' # conflict with routing-filter
+  gem 'letter_opener'
+  gem 'rails3-generators'
+  gem 'legacy_migrations', :git => 'git://github.com/Antiarchitect/legacy_migrations.git'
+
+  # debug
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'looksee'
+  gem 'awesome_print'
+  gem 'wirble'
+  gem 'hirb'
+  # gem 'rails-footnotes', '>= 3.7.5.rc4' # this shit is very buggy don't forget to switch it off back
+
+  # deploy
+  gem 'capistrano', :require => false
+  gem 'capistrano-exts', :require => false #, :git => 'git://github.com/chipiga/capistrano-exts.git'
+  # gem 'capistrano-recipes', :require => false
+  gem 'capistrano_colors', :require => false
+
+  gem "unicorn"
+  gem 'rvm'
+end
+
+group :test do
+  gem 'rspec-rails',        '~> 2.7.0'
+  gem 'factory_girl_rails', '~> 1.3.0'
+  gem 'spork',              '>= 0.9.0.rc9'
+  gem 'guard-spork',        '~> 0.3.1'
+  gem 'guard-rspec',        '~> 0.5.0'
+  gem 'guard-bundler',      '~> 0.1.3'
+
+  gem 'rb-fsevent', '>= 0.4.3', :require => false
+  gem 'growl',      '~> 1.0.3', :require => false
+  gem 'rb-inotify', '>= 0.8.6', :require => false
+  gem 'libnotify',  '~> 0.5.7', :require => false
+end

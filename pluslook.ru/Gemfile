@@ -1,0 +1,102 @@
+source 'http://rubygems.org'
+
+gem 'rails', :git => 'https://github.com/rails/rails.git', :branch => '3-1-stable'
+
+# Database
+gem 'mysql2', '~> 0.3.6'
+gem 'foreigner', '1.0.3' # new versions can be buggy
+#gem 'thinking-sphinx'
+# gem 'sunspot_rails'
+# gem "sunspot_with_kaminari", '~> 0.1'
+
+
+# Auth
+# gem 'devise', '~> 1.4.2'
+gem 'cancan', '~> 1.6.5'
+gem 'oauth2'
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+
+# Models
+gem 'carrierwave', '~> 0.5.6'
+gem 'mini_magick', '~> 3.3'
+gem 'acts-as-taggable-on', :git => 'git://github.com/mbleigh/acts-as-taggable-on.git'
+gem 'make_voteable', :git => 'git://github.com/medihack/make_voteable.git' # '~> 0.1.0'
+gem 'kaminari', '~> 0.12.4'
+# gem 'clean-bitmask-attribute', '~> 2.0.3', :require => 'bitmask-attribute'
+gem 'friendly_id4', :git => 'git://github.com/norman/friendly_id.git', :branch => '4.0.0', :require => 'friendly_id'
+
+# Controllers
+gem 'inherited_resources', :git => 'git://github.com/chipiga/inherited_resources.git' # '~> 1.2.2'
+gem 'has_scope', :git => 'https://github.com/plataformatec/has_scope.git' # '~> 0.5.0'
+
+# Views
+gem 'haml-rails', '~> 0.3.4'
+gem 'formtastic', :git => 'https://github.com/justinfrench/formtastic.git'
+gem 'show_for',   :git => 'https://github.com/plataformatec/show_for.git'
+
+# Asset template engines
+# gem 'compass', '~> 0.11.5'
+
+# JS
+gem 'jquery-rails'
+
+# Misc
+gem 'rails3-generators', '~> 0.17.4'
+# gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git' #, '~> 0.0.30'
+gem 'feedzirra', :git => 'git://github.com/klaffenboeck/feedzirra.git' #, :branch => 'archiloque'
+gem 'meta-tags', '~> 1.2.4', :require => 'meta_tags'
+gem 'delayed_job', '~> 2.1.4'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
+gem 'face'
+
+# Assets
+# use edge because of this issue: https://github.com/rails/rails/issues/2308
+gem 'sprockets', :git => "https://github.com/sstephenson/sprockets.git"
+
+# Comments
+gem 'acts_as_commentable_with_threading', :git => "https://github.com/kamarcum/acts_as_commentable_with_threading.git"
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-script'
+  gem 'uglifier'
+  gem 'therubyracer', '~> 0.9.2'
+  # gem 'chunky_png'
+  # gem 'sprite-factory', '>= 1.4.0'
+end
+
+group :production do
+  gem 'passenger', '~> 3.0.7'
+  gem 'exception_notification', '~> 2.4.1'
+end
+
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'looksee'
+  gem 'awesome_print'
+  gem 'wirble'
+  gem 'hirb'
+end
+
+group :test do
+  gem 'parallel_tests'
+  gem 'rspec-rails',        '~> 2.6.1'
+  gem 'shoulda-matchers',   '~> 1.0.0.beta3'
+  gem 'webmock',            '~> 1.6.4'
+  gem 'factory_girl_rails', '~> 1.1.0'
+  gem 'spork',              '>= 0.9.0.rc9'
+  gem 'database_cleaner',   '~> 0.6'
+  gem 'guard-spork',        '~> 0.2'
+  gem 'guard-rspec',        '~> 0.3'
+  gem 'guard-bundler',      '~> 0.1'
+
+  # don't check platform, because of bundler bug
+  gem 'rb-fsevent', '>= 0.4.0', :require => false
+  gem 'growl',      '~> 1.0.3', :require => false
+
+  gem 'rb-inotify', '>= 0.8.5', :require => false
+  gem 'libnotify',  '~> 0.1.3', :require => false
+end
