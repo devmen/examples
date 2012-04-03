@@ -1,0 +1,5 @@
+- collection.each do |activity_feed|
+  = render activity_feed
+- if params[:paginate] == 'true'
+  #activity_feed_pages
+    = will_paginate collection, :previous_label => "", :next_label => ""

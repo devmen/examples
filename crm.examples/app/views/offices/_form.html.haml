@@ -1,0 +1,51 @@
+.dlgbox
+  .dlgBox#office-new-dlg{:style => "display: none; opacity: 1; "}
+    .dlgBg
+    .dlgCanvas{:style => "height: auto; margin-top: -238px; padding-bottom: 15px; position: relative;"}
+      = semantic_form_for resource.new_record? ? [parent, resource] : resource, :html => {:multipart => true, :class => '', :id => 'dlg-form' } do |f|
+
+        .create-dlg-title
+          %p
+            %span> Добавить:
+            офис
+
+        = f.inputs :class => 'inputs narrow' do
+          = hidden_field_tag "update_select", params[:update_select]
+          = f.input :name
+
+          = f.semantic_fields_for :address do |address|
+            = address.input :state, :label => 'Область'
+            = address.input :city, :label => 'Город'
+            = address.input :street, :label => 'Улица'
+            = address.input :house_number, :wrapper_html => {:class => 'in-line'}, :label => 'Дом', :input_html => {:class => 'tiny'}
+            = address.input :building, :label => 'Корп.', :wrapper_html => {:class => 'in-line'}, :input_html => {:class => 'tiny'}
+            = address.input :room, :label => 'Офис', :wrapper_html => {:class => 'in-line'}, :input_html => {:class => 'tiny'}
+            = f.input :note, :input_html => {:cols => 40, :rows => 2}, :label => 'Заметки, пароли и коды:', :wrapper_html => {:class => 'multiline'}
+          = render 'common/responsible_manager', :f => f
+
+        %fieldset.inputs.narrow.mapContainer
+          %ol
+            %li
+              %span.label Карта:
+            %li.map
+              %img{:alt => "", :height => "229", :src => "/images/map.png", :width => "283"}/
+        %fieldset.printControls
+          %ol
+            %li
+              %span.label Распечатать:
+            %li.nl
+              %button{:name => "agent", :type => "button"} экспедитору
+            %li
+              %button.wideBtn{:name => "mail", :type => "button"} корреспонденция
+
+        = f.buttons do
+          = f.commit_button :button_html => {:id => 'dlg-save', :value => 'Сохранить'}
+          %li
+            %input{:type => 'reset', :id => 'dlg-cancel', :value => 'Отменить'}
+
+      .closeDlg
+
+      = javascript_include_tag 'jquery.form.js'
+      = javascript_include_tag 'forms/forms_handlers', 'forms/ajax_forms_handlers'
+
+= errors_list(resource)

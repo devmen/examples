@@ -1,0 +1,5 @@
+%li.showOnWrite.office-item{:style => "display: list-item; "}
+  %label{:for => "client-office"} Офис:
+  %input#client-office-1.showOnWrite{:name => "client-office-1", :style => "display: inline-block; background-position: 0px -100px; ", :type => "text", :value => office.name}
+  %span.addFromDlgBtn.showOnWrite
+    = link_to "", new_client_office_path(office.client), :remote => true

@@ -1,0 +1,31 @@
+= javascript_include_tag 'customers_feed'
+
+.data-container
+  .data-chunk-header
+    .title
+      %p Клиенты:
+      %ul.customers_filter
+        %li
+          %a.best{:href => "best=true"} Любимые
+        %li
+          %a.worst{:href => "worst=true"} Пора сотрудничать
+        %li
+          %a.favourite{:href => "favourite=true"} Избранные
+        %li.last
+          %a.all{:href => "all=true"} Все
+    .fit
+      %a{:href => "#"}
+  #dc1.data-chunk.scrollable
+    %table
+      %thead
+        %tr
+          %th
+            Имя
+            %ul.sorting.customers.alpha
+              %li.desc
+                %a.order_by_description_desc{:href => "order_by_description_desc=true"}
+              %li.asc
+                %a.order_by_description{:href => "order_by_description=true"}
+      %tbody
+        - CustomersFeed.accessible_by(current_ability).collection_by_options(:order_by_description => cookies[:customers_order_by_description], :customers_filter => cookies[:customers_filter]).paginate(:page => 1, :per_page => 10).each do |customers_feed|
+          = render customers_feed

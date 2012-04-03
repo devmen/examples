@@ -1,0 +1,20 @@
+%h1><
+  - unless current_user.photo.file.nil?
+    = image_tag(current_user.photo.avatar.to_s, :size => '50x50', :alt => 'Aватар пользователя', :title => current_user.fio)
+  = current_user.fio
+%p#status><
+
+= render '/activity_feeds/index'
+
+#activity_feed_pages
+  = will_paginate @activity_feeds, :previous_label => "", :next_label => ""
+
+:javascript
+  // Switch on ajax pagination:
+  PAGINATE = true;
+
+:css
+  .data-chunk {
+    overflow: hidden;
+    height:  auto;
+  }

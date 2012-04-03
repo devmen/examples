@@ -1,0 +1,8 @@
+%tr
+  %td
+    = link_to result do
+      = raw result.excerpts.name.force_encoding("UTF-8")
+  - if can? :update, result
+    %td= link_to t('edit'), edit_office_path(result)
+  - if can? :destroy, result
+    %td= link_to t('destroy'), result, :confirm => 'Are you sure?', :method => :delete

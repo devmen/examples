@@ -1,0 +1,36 @@
+.panel
+  %span.txt Создать:
+.panel
+  .drop-down
+    .drop-down-head
+      %span.dd-name Активности
+    .drop-down-items
+      %ul
+        %li
+          - if can? :read, Call
+            = link_to Call.model_name.human.pluralize, new_call_path, :class => 'calls', :remote => true
+        %li
+          - if can? :read, Meeting
+            = link_to Meeting.model_name.human.pluralize, new_meeting_path, :class => 'appointments', :remote => true
+        %li
+          - if can? :read, Task
+            = link_to Task.model_name.human.pluralize, new_task_path, :class => 'tasks', :remote => true
+        %li
+          - if can? :read, Emailer
+            = link_to Emailer.model_name.human.pluralize, new_emailer_path, :class => 'emailers', :remote => true
+.panel
+  .drop-down
+    .drop-down-head
+      %span.dd-name Клиент
+    .drop-down-items
+      %ul
+        %li
+          - if can? :read, Lead
+            = link_to 'Потенциальные клиенты', new_lead_path, :class => 'potential-clients', :remote => true
+        %li
+          - if can? :read, Contact
+            = link_to 'Контакты', new_contact_path, :class => 'contacts', :remote => true
+        %li
+          - if can? :read, Client
+            = link_to Client.model_name.human.pluralize, new_client_path, :class => 'companies', :remote => true
+

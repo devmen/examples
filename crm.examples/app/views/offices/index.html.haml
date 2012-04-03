@@ -1,0 +1,16 @@
+- title t('titles.office.index')
+
+%h1= t('titles.office.index')
+
+%table
+  %tr
+    %th
+    %th
+    %th
+  = render collection
+%br
+
+- if can? :create, resource_class
+  = link_to t('new'), new_resource_path
+  \|
+= link_to t('back'), parent_path

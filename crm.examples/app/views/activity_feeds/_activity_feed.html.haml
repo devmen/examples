@@ -1,0 +1,8 @@
+%tr{:class => feed_td_class_name(activity_feed)}
+  %td{:class => "icon #{ feed_td_class_name(activity_feed) }"}
+  %td.name
+    = link_to activity_feed.clientable ? activity_feed.clientable.full_name : "", activity_feed.feedable, :target => '_blank'
+  %td.description><
+    = activity_feed.description.to_s
+  %td= l activity_feed.end_datetime
+  %td

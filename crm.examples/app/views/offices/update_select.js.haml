@@ -1,0 +1,9 @@
+- if @offices
+  $('select#office_id').find('option').remove();
+  - @offices.each do |office|
+    $('select#office_id').append("<option value='#{ office.id }'>#{ office.name }</option>");
+- else
+  $('.dlgbox').hide();
+  $('select#office_id').append("<option value='#{ resource.id }'>#{ resource.name }</option>");
+$('select#office_id').selectBox("destroy");
+$('select#office_id').selectBox("create");

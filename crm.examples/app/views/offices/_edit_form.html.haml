@@ -1,0 +1,41 @@
+= semantic_form_for resource, :html => { :multipart => true, :class => '', :id => 'editCard' } do |f|
+  = f.inputs :class => 'inputs client-info client narrow' do
+    = f.input :name
+
+    = f.semantic_fields_for :address do |address|
+      = address.input :state, :label => 'Область'
+      = address.input :city, :label => 'Город'
+      = address.input :street, :label => 'Улица'
+      = address.input :house_number, :wrapper_html => {:class => 'in-line'}, :label => 'Дом', :input_html => {:class => 'tiny'}
+      = address.input :building, :label => 'Корп.', :wrapper_html => {:class => 'in-line'}, :input_html => {:class => 'tiny'}
+      = address.input :room, :label => 'Офис', :wrapper_html => {:class => 'in-line'}, :input_html => {:class => 'tiny'}
+      = f.input :note, :input_html => {:cols => 40, :rows => 2}, :label => 'Заметки, пароли и коды:', :wrapper_html => {:class => 'multiline'}
+    = render 'common/responsible_manager', :f => f
+
+  %fieldset.inputs.client-info.narrow.mapContainer
+    %ol
+      %li
+        %span.label Карта:
+      %li.map
+        %img{:alt => "", :height => "229", :src => "/images/map.png", :width => "283"}/
+  %fieldset.inputs.client-info.narrow.printControls
+    %ol
+      %li
+        %span.label Распечатать:
+      %li.nl
+        %button{:name => "act-agent", :type => "button"} экспедитору
+      %li
+        %button.wideBtn{:name => "act-mail", :type => "button"} корреспонденция
+
+  - if can? :update, resource
+    = f.buttons do
+      = f.commit_button :button_html => {:id => 'save', :value => 'Сохранить'}
+      %li
+        %input{:type => 'reset', :id => 'cancel', :value => 'Отменить'}
+
+= javascript_include_tag 'indicrm.ru'
+= stylesheet_link_tag 'jquery.selectBox.css'
+= javascript_include_tag 'jquery.selectBox.js'
+= javascript_include_tag 'forms/forms_handlers', 'forms/edit_card_form_handlers.js'
+
+= errors_list(resource)

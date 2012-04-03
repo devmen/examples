@@ -1,0 +1,21 @@
+.data-chunk-header
+  .title
+    %p= 'Создать:'
+    %ul
+      %li
+        - if can? :read, Call
+          = link_to Call.model_name.human,
+            new_call_path(:callable_id => resource.id, :callable_type => resource.class), :class => 'calls', :remote => true
+      %li
+        - if can? :read, Meeting
+          = link_to Meeting.model_name.human,
+            new_meeting_path(:meetable_id => resource.id, :meetable_type => resource.class), :class => 'appointments', :remote => true
+      %li
+        - if can? :read, Task
+          = link_to Task.model_name.human,
+            new_task_path(:taskable_id => resource.id, :taskable_type => resource.class), :class => 'tasks', :remote => true
+      %li
+        - if can? :read, Emailer
+          = link_to Emailer.model_name.human,
+            new_emailer_path(:mailable_id => resource.id, :mailable_type => resource.class), :class => 'emailers', :remote => true
+

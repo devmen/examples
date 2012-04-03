@@ -1,0 +1,67 @@
+= javascript_include_tag 'indicrm.ru'
+= javascript_include_tag 'jquery.cookie'
+= javascript_include_tag 'activity_feed'
+
+#toolbar
+  = render :partial => "activity_feeds/#{(request.request_uri == '/' || request.request_uri.index('activity_feeds'))? 'main' : 'inner'}_toolbar"
+/ блоки рабочей информации
+#data
+  / активности (блок данных)
+  .data-container
+    / заголовок блока данных
+    .data-chunk-header
+      .title
+        %p План на:
+        %ul
+          %li
+            %a.filter_by_date#all{:href => "all=true"} Все
+          %li
+            %a.filter_by_date#today{:href => "today=true"} Сегодня
+          %li
+            %a.filter_by_date#tomorrow{:href => "tomorrow=true"} Завтра
+          %li
+            %a.filter_by_date#week{:href => "week=true"} Неделю
+          %li.last
+            %a.filter_by_date#future{:href => "future=true"} Все будущее
+      .filter
+        %p Видеть только:
+        %ul
+          %li.filter_by_type
+            %a.calls{:href => "/"}
+          %li.filter_by_type
+            %a.appointments{:href => "/"}
+          %li.filter_by_type
+            %a.tasks{:href => "/"}
+          %li.filter_by_type
+            %a.letters{:href => "/"}
+          %li.filter_by_type
+            %a.fax{:href => "/"}
+      .fit
+        %a{:href => "/"}
+    / данные
+    #dc0{ :class => (request.fullpath.index(activity_feeds_path) ? 'data-chunk' : 'data-chunk scrollable') }
+      %table
+        %thead
+          %tr
+            %th.icon
+            %th.cname Клиент
+            %th.description Описание
+            %th.deadline
+              Срок
+              %ul.sorting.general
+                %li.order_by_date.asc
+                  %a.order_by_date{:href => "order_by_date=true"}
+                %li.order_by_date.desc
+                  %a.order_by_date_desc{:href => "order_by_date_desc=true"}
+            %th.action
+              Действие
+              %ul.sorting.general
+                %li.desc
+                  %a{:href => "#"}
+                %li.asc
+                  %a{:href => "#"}
+        %tbody
+          - @activity_feeds = ActivityFeed.accessible_by(current_ability).collection_by_options(:filter_by_date => cookies[:filter_by_date], :filter_by_contact => cookies[:filter_by_contact], :filter_by_client => cookies[:filter_by_client], :order_by_date => cookies[:order_by_date]).paginate(:per_page => 20, :page => 1)
+          - @activity_feeds.each do |activity_feed|
+            = render 'activity_feeds/activity_feed', :activity_feed => activity_feed
+
