@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+
+gem "curb", "~> 0.8.0"
+gem "nokogiri", "~> 1.5.2"
+gem "httparty", "~> 0.8.1"
+
