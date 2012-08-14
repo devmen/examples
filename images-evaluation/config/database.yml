@@ -1,0 +1,23 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *common
+  database: carousel_development
+  username: postgres
+  password: '123'
+
+test:
+  <<: *common
+  database: carousel_test
+  username: postgres
+  password: '123'
+
+production:
+  <<: *common
+  database: carousel_production
+  username: postgres
+  password: '123'
+

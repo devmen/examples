@@ -1,0 +1,16 @@
+.center
+  %h1= "Images Evaluation"
+
+%ul.images
+  - @images.each do |image|
+    %li.image
+      %span
+        = image_tag image.url
+        %ul.rating.nostar{id: dom_id(image, :rating)}
+          - Image::RANKS.each do |rank, klass|
+            %li{class: klass}= link_to rank, evaluate_image_path(image, rank: rank), method: :post, remote: true
+
+.evaluation.center
+  Average Rating:
+  %span#evaluation= Image.average_rank
+

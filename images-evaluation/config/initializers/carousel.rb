@@ -1,0 +1,1 @@
+require 'average_calculator'

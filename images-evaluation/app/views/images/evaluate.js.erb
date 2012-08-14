@@ -1,0 +1,5 @@
+var $ul = $("#<%= dom_id(@image, :rating) %>")
+$ul.removeClass().addClass("rating <%= @rank_class %>");
+$ul.find("li a").attr("href", "#");
+
+$("#evaluation").html("<%= @average_rank %>");

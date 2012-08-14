@@ -1,0 +1,88 @@
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.images {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 42em;
+  height: 24em;
+
+  li.image {
+    height: 21em;
+    width: 30em;
+    background-color: #eee;
+    text-align: center;
+    cursor: pointer;
+
+    span {
+      display: block;
+
+      img {
+        width: 30em;
+      }
+
+      .nostar { background-position:0 0 !important; }
+      .onestar { background-position:0 -16px !important; }
+      .twostar { background-position:0 -32px !important; }
+      .threestar { background-position:0 -48px !important; }
+      .fourstar { background-position:0 -64px !important; }
+      .fivestar { background-position:0 -80px !important; }
+
+      .rating{
+        width:80px;
+        height:16px;
+        margin:4px 0 20px 12em;
+        padding:0;
+        list-style:none;
+        clear:both;
+        position:relative;
+        background: image-url("star-matrix.gif") no-repeat 0 0;
+      }
+
+      ul.rating li {
+        cursor: pointer;
+        float:left;
+        text-indent:-999em;/* hide text*/
+      }
+
+      ul.rating li a {
+        position:absolute;
+        left:0;
+        top:0;
+        width:16px;
+        height:16px;
+        text-decoration:none;
+        z-index: 200;
+      }
+      ul.rating li.one a {left:0}
+      ul.rating li.two a {left:16px;}
+      ul.rating li.three a {left:32px;}
+      ul.rating li.four a {left:48px;}
+      ul.rating li.five a {left:64px;}
+
+      ul.rating li a:hover {
+        z-index:2;
+        width:80px;
+        height:16px;
+        overflow:hidden;
+        left:0;
+        background: image-url("star-matrix.gif") no-repeat 0 0
+      }
+      ul.rating li.one a:hover {background-position:0 -96px;}
+      ul.rating li.two a:hover {background-position:0 -112px;}
+      ul.rating li.three a:hover {background-position:0 -128px}
+      ul.rating li.four a:hover {background-position:0 -144px}
+      ul.rating li.five a:hover {background-position:0 -160px}
+    }
+  }
+  li.roundabout-in-focus {
+    cursor: default;
+  }
+}
+
+#carbonads-container .carbonad {
+  margin: 0 auto;
+}
+
