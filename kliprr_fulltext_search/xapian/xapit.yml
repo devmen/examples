@@ -1,0 +1,19 @@
+# See https://github.com/ryanb/xapit/wiki/Configuration
+development:
+  database_path: "/srv/kliprr/shared/db/xapit"
+  server: "http://localhost:9292"
+
+test:
+  enabled: false
+  spelling: false
+
+staging:
+  database_path: "/srv/kliprr/shared/db/xapit"
+  server: "http://localhost:9292"
+
+production:
+  database_path: "/srv/kliprr/shared/db/xapit"
+  server: "http://localhost:9292"
+
+production_serv:
+  database_path: "/srv/kliprr/shared/db/xapit"
