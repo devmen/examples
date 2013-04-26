@@ -1,0 +1,18 @@
+Bellrunner
+========================
+
+sox, mp3splt, ffmpeg
+
+Install ffmepg
+--------------
+        sudo apt-get install ffmpeg
+
+Intall mp3splt
+--------------
+        http://mp3splt.sourceforge.net/mp3splt_page/debian_downloads.php?version=Precise&ubuntu=true
+        or sudo apt-get install mp3splt
+
+
+Install sox
+-----------
+        sudo apt-get install sox libsox-fmt-all libsox-fmt-mp3 libsox-fmt-ffmpeg

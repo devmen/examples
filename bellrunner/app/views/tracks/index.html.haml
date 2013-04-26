@@ -1,0 +1,29 @@
+- unless current_user.limit_of_duration?
+  .row-fluid
+    .span1
+    .span10
+      = simple_form_for(@track, :html => {:class => "form-horizontal"}) do |form|
+        %legend
+          New Track
+        = render form
+        = form.button :submit, "Save"
+    .span1
+- else
+  = link_to "Download Song", download_tracks_path(:json), :class => "btn btn-link", :id => "download-link", :remote => true
+  = image_tag "ajax-loader.gif", :style => "display:none;", :id => "ajax-loader"
+%hr
+.row-fluid
+  - if current_user.tracks.present?
+    .row-fluid
+      .span2
+        = "Duration: #{ (current_user.tracks.sum(:duration) / 1.minute).round(2) }"
+    %table.table
+      %tr
+        %th
+          File
+        %th
+          Duration
+      - current_user.tracks.each do |item|
+        %tr
+          %td= item.attachment_file_name
+          %td= item.duration

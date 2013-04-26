@@ -1,0 +1,7 @@
+-# = form.input :attachment, :as => :file
+.control-group.string.optional{:class => form.object.errors.present? ? 'error' : '' }
+  = form.label :attachment
+  .controls
+    = form.file_field :attachment
+    %span.help-block
+      = form.object.errors.full_messages.join(", ")
